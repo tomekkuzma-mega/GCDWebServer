@@ -31,7 +31,7 @@
 
 #import <TargetConditionals.h>
 #if TARGET_OS_IPHONE
-#import <MobileCoreServices/MobileCoreServices.h>
+#import <CoreServices/CoreServices.h>
 #else
 #import <SystemConfiguration/SystemConfiguration.h>
 #endif
@@ -41,7 +41,11 @@
 #import <net/if.h>
 #import <netdb.h>
 
+#ifdef SWIFT_PACKAGE
+#import "../Core/GCDWebServerPrivate.h"
+#else
 #import "GCDWebServerPrivate.h"
+#endif
 
 static NSDateFormatter* _dateFormatterRFC822 = nil;
 static NSDateFormatter* _dateFormatterISO8601 = nil;
